@@ -1,0 +1,397 @@
+       /* Reset y estilos generales */
+        * {
+            font-family: Sans-Serif;
+            margin: 0%;
+            padding: 0%;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Sans-Serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #e8f5e8 0%, #c8e6c9 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* MENÚ MEJORADO */
+        .menu {
+            background-color: #F5F5F0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            min-height: 100px;
+        }
+
+        /* Logo en el lado izquierdo */
+        .logo {
+            flex: 0 0 auto;
+            text-align: left;
+        }
+
+        .logo img {
+            height: 60px;
+            width: auto;
+            transition: transform 0.3s ease;
+        }
+
+        .logo img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Menú de navegación en el lado derecho */
+        .menu ul {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .menu ul li a {
+            text-decoration: none;
+            color: #46b446;
+            font-weight: 600;
+            font-size: 1.2rem;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu ul li a:hover {
+            background-color: #46b446;
+            color: white;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(70, 180, 70, 0.3);
+        }
+
+        /* CONTENIDO PRINCIPAL */
+        .main-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 20px 5%;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1400px;
+            height: 700px;
+            gap: 15px;
+            animation: fadeInUp 0.8s ease-out;
+            padding: 20px;
+        }
+
+        /* PANELES REDISEÑADOS PARA FOTOS VERTICALES */
+        .panel {
+            border-radius: 20px;
+            color: #fff;
+            cursor: pointer;
+            flex: 1;
+            position: relative;
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+            overflow: hidden;
+            border: 3px solid #4caf50;
+            
+            /* OPTIMIZACIÓN CLAVE PARA IMÁGENES VERTICALES */
+            background-size: contain;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: #f8f9fa;
+        }
+
+        /* Efecto de borde amarillo en hover */
+        .panel:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+            border-color: #FDE640;
+        }
+
+        /* Overlay sutil para mejorar la visualización */
+        .panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                45deg,
+                rgba(76, 175, 80, 0.1) 0%,
+                rgba(253, 230, 64, 0.1) 100%
+            );
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .panel:hover::before {
+            opacity: 1;
+        }
+
+        /* Efecto decorativo superior mejorado */
+        .panel::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, transparent 0%, #FDE640 50%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .panel:hover::after {
+            opacity: 1;
+        }
+
+        /* Títulos dentro de la tarjeta - REMOVIDOS */
+        .panel h3 {
+            display: none;
+        }
+
+        /* Estilo cuando la tarjeta está activa (expandida) */
+        .panel.active {
+            flex: 4;
+            transform: translateY(-10px);
+            border-color: #FDE640;
+            box-shadow: 0 25px 60px rgba(253, 230, 64, 0.3);
+            
+            /* Imagen se ajusta perfectamente cuando está activa */
+            background-size: contain;
+            background-position: center;
+        }
+
+        /* Efecto de pulso sutil en panel activo */
+        .panel.active::before {
+            opacity: 0.8;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 0.8; }
+            50% { opacity: 0.4; }
+        }
+
+        /* Colores específicos para cada sección */
+        .panel:nth-child(1) {
+            border-color: #4caf50;
+        }
+
+        .panel:nth-child(2) {
+            border-color: #FDE640;
+        }
+
+        .panel:nth-child(3) {
+            border-color: #2e7d32;
+        }
+
+        .panel:nth-child(4) {
+            border-color: #FDE640;
+        }
+
+        .panel:nth-child(5) {
+            border-color: #4caf50;
+        }
+
+        /* FOOTER SIMPLE COMO EN LA IMAGEN */
+        .dere {
+            background-color: #666666;
+            padding: 2rem 0;
+            margin-top: 4rem;
+            width: 100%;
+        }
+
+        footer {
+            color: white;
+            text-align: center;
+            padding: 1rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .derechos {
+            text-align: center;
+            font-size: 1rem;
+            margin: 0 0 0.5rem 0;
+            opacity: 0.9;
+        }
+
+        .footer-info {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin-top: 0.5rem;
+        }
+
+        .footer-info p {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin: 0;
+        }
+
+        /* Animaciones */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* RESPONSIVE DESIGN MEJORADO */
+        
+        /* Tablets */
+        @media (max-width: 768px) {
+            .menu {
+                padding: 1rem 3%;
+                min-height: 70px;
+            }
+            
+            .menu ul {
+                gap: 1.5rem;
+            }
+            
+            .menu ul li a {
+                font-size: 1rem;
+                padding: 0.6rem 1rem;
+            }
+            
+            .logo img {
+                height: 50px;
+            }
+            
+            .main-content {
+                padding: 15px 3%;
+            }
+            
+            .container {
+                height: 500px;
+                gap: 10px;
+                padding: 15px;
+            }
+            
+            .panel {
+                background-size: contain;
+            }
+            
+            .panel.active {
+                flex: 3;
+            }
+            
+            .dere {
+                padding: 2rem 3%;
+            }
+            
+            .footer-info {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Móviles */
+        @media (max-width: 480px) {
+            .menu {
+                flex-direction: column;
+                padding: 1rem 5%;
+                min-height: auto;
+                gap: 1rem;
+            }
+            
+            .menu ul {
+                gap: 1rem;
+            }
+            
+            .menu ul li a {
+                font-size: 0.9rem;
+                padding: 0.5rem 0.8rem;
+            }
+            
+            .logo img {
+                height: 45px;
+            }
+            
+            .main-content {
+                padding: 10px 5%;
+            }
+            
+            .container {
+                flex-direction: column;
+                height: auto;
+                max-height: 90vh;
+                width: 100%;
+                gap: 20px;
+                padding: 10px;
+            }
+            
+            .panel {
+                height: 180px;
+                border-radius: 15px;
+                flex: none;
+                transition: all 0.6s ease;
+                background-size: contain;
+                background-position: center;
+                border-width: 2px;
+            }
+            
+            .panel.active {
+                height: 320px;
+                flex: none;
+                transform: translateY(-5px);
+                background-size: contain;
+            }
+            
+            .dere {
+                padding: 2rem 5%;
+            }
+            
+            .footer-info p {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* Móviles muy pequeños */
+        @media (max-width: 320px) {
+            .menu ul {
+                gap: 0.5rem;
+            }
+            
+            .menu ul li a {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.6rem;
+            }
+            
+            .panel {
+                height: 150px;
+            }
+            
+            .panel.active {
+                height: 280px;
+            }
+            
+            .derechos {
+                font-size: 0.9rem;
+            }
+            
+            .footer-info p {
+                font-size: 0.75rem;
+            }
+        }

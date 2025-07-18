@@ -1,0 +1,6 @@
+# Este archivo permite que cualquier buscador acceda a todas las páginas
+User-agent: *
+Allow: /
+
+# Dirección del mapa del sitio
+Sitemap: https://pcp2007.github.io/plantaconproposito.github.io/sitemap.xml
